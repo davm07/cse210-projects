@@ -20,19 +20,34 @@ public class Journal
 
     public void LoadFromFile(string filename)
     {
+        string[] lines = File.ReadAllLines(filename);
         
+
+        foreach (string line in lines)
+        {   
+            Entry loadEntry = new Entry();
+            string[] parts = line.Split("**");
+            string date = parts[0];
+            string prompt = parts[1];
+            string answer = parts[2];
+
+            loadEntry._date = date;
+            loadEntry._prompt = prompt;
+            loadEntry._entry = answer;
+
+            _entries.Add(loadEntry);
+        }
     }
 
     public void SaveToFile(string filename)
-    { /*
+    { 
         using( StreamWriter outputFile = new StreamWriter(filename))
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"Date: {_date.ToShortDateString()} - Prompt: {_prompt}");
-                outputFile.WriteLine(_entry);
+                outputFile.WriteLine($"{entry._date}**{entry._prompt}**{entry._entry}");
             }
-        }*/
+        }
 
     }
 

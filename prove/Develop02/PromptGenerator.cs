@@ -13,13 +13,10 @@ public class PromptGenerator
     public string SelectPrompt() 
     {
         Random rnd = new Random();
-        int index = rnd.Next(_prompts.Length);
+        int index = rnd.Next(0, _prompts.Length);
         string prompt = _prompts[index];
 
         return prompt;
     }
-
-    
-
 
 }

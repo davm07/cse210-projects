@@ -20,7 +20,6 @@ class Program
             {
                 Console.WriteLine(option);
             }
-
         }
 
         Journal newJournal = new Journal();
@@ -45,8 +44,10 @@ class Program
             {
                 newJournal.DisplayEntry();
             } else if (option == 3) 
-            {
-                
+            {   
+                Console.Write("Please enter the name of the file: ");
+                string filename = Console.ReadLine();
+                newJournal.LoadFromFile(filename);
             } else if (option == 4)
             {
                 Console.Write("Please enter the name of the file: ");
