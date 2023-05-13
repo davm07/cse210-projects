@@ -14,7 +14,12 @@ public class PromptGenerator
         "What did I learn today?",
         "What are some things I would like to do differently tomorrow?",
         "What did I do to help others today?",
-        "What were some unexpected events that took place today?"
+        "What were some unexpected events that took place today?",
+        "How did my emotions affect my thoughts and behavior today?",
+        "What were some moments of peace or calm today?",
+        "How did I handle negative emotions today?",
+        "What are some ways I can deepen my connections with loved ones?",
+        "If I would had another hour during the day, how would I have spent it?"
     };
 
     public string SelectPrompt() 
