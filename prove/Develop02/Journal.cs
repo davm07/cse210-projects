@@ -21,10 +21,11 @@ public class Journal
     public void LoadFromFile(string filename)
     {
         string[] lines = File.ReadAllLines(filename);
-        
 
-        foreach (string line in lines)
-        {   
+        if (lines.Length > 0) 
+        {
+            foreach (string line in lines)
+            {   
             Entry loadEntry = new Entry();
             string[] parts = line.Split("**");
             string date = parts[0];
@@ -36,7 +37,11 @@ public class Journal
             loadEntry._entry = answer;
 
             _entries.Add(loadEntry);
-        }
+            }
+        } else 
+        {
+            Console.WriteLine($"The file named: {filename} is empty, are you sure it's the correct one?");
+        } 
     }
 
     public void SaveToFile(string filename)
@@ -48,9 +53,6 @@ public class Journal
                 outputFile.WriteLine($"{entry._date}**{entry._prompt}**{entry._entry}");
             }
         }
-
     }
-
-
     
 }

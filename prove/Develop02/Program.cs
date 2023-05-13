@@ -28,34 +28,44 @@ class Program
         {
             DisplayMenu();
             Console.Write("What would you like to do? ");
-            option = int.Parse(Console.ReadLine());
-            if (option == 1)
-            {   
-                PromptGenerator newPrompt = new PromptGenerator();
-                Entry userEntry = new Entry();
-                string promptSelected = newPrompt.SelectPrompt();
-                userEntry._prompt = promptSelected;
-                Console.WriteLine(promptSelected);
-                Console.Write("> ");
-                userEntry._entry = Console.ReadLine();
-                newJournal.AddEntry(userEntry);
+            try
+            {
+                option = int.Parse(Console.ReadLine());
+                if (option == 1)
+                {   
+                    PromptGenerator newPrompt = new PromptGenerator();
+                    Entry userEntry = new Entry();
+                    string promptSelected = newPrompt.SelectPrompt();
+                    userEntry._prompt = promptSelected;
+                    Console.WriteLine(promptSelected);
+                    Console.Write("> ");
+                    userEntry._entry = Console.ReadLine();
+                    newJournal.AddEntry(userEntry);
 
-            } else if (option == 2) 
+                } else if (option == 2) 
+                {
+                    newJournal.DisplayEntry();
+                } else if (option == 3) 
+                {   
+                    Console.Write("Please enter the name of the file: ");
+                    string filename = Console.ReadLine();
+                    newJournal.LoadFromFile(filename);
+                } else if (option == 4)
+                {
+                    Console.Write("Please enter the name of the file: ");
+                    string filename = Console.ReadLine();
+                    newJournal.SaveToFile(filename);
+                }
+            } 
+            catch(FormatException)
             {
-                newJournal.DisplayEntry();
-            } else if (option == 3) 
-            {   
-                Console.Write("Please enter the name of the file: ");
-                string filename = Console.ReadLine();
-                newJournal.LoadFromFile(filename);
-            } else if (option == 4)
-            {
-                Console.Write("Please enter the name of the file: ");
-                string filename = Console.ReadLine();
-                newJournal.SaveToFile(filename);
+                Console.WriteLine("Please enter only the numbers that are in the menu");
+                Console.WriteLine("Don't input letters");
             }
-
-
+            catch(FileNotFoundException)
+            {   
+                Console.WriteLine("That file doesn't exists please enter the correct file name!");
+            }
         }
     }
 }
