@@ -23,7 +23,7 @@ class Program
         }
 
         Journal newJournal = new Journal();
-        int option = -1;
+        int option = 0;
         while (option != 5)
         {
             DisplayMenu();
@@ -55,6 +55,9 @@ class Program
                     Console.Write("Please enter the name of the file: ");
                     string filename = Console.ReadLine();
                     newJournal.SaveToFile(filename);
+                } else if (option > 5 || option <= 0) 
+                {
+                    Console.WriteLine("Please enter only the numbers that are in the menu");
                 }
             } 
             catch(FormatException)
