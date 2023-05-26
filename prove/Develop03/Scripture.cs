@@ -39,5 +39,10 @@ public class Scripture
         _scriptureText = string.Join(" ", words);
         return _scriptureText;
     }
+
+    // public bool IsCompletelyHidden() 
+    // {
+        
+    // }
     
 }

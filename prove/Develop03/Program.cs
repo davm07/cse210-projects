@@ -21,7 +21,7 @@ class Program
             Console.Clear();
             Console.WriteLine(myscripture.MakeScripture());
             Console.WriteLine();
-            Console.WriteLine("Type \"quit\" to end the program");
+            Console.WriteLine("Press enter to continue or type \"quit\" to finish");
             List <string> list = myscripture.MakeList();
             myscripture.CreateHiddenScrip(list);
             userChoice = Console.ReadLine().ToLower();
