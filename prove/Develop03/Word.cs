@@ -19,7 +19,8 @@ public class Word
     //     return _word;
     // }
 
-    public string DisplayWord(){
+    public string DisplayText()
+    {
         if (_isHidden)
         {
             return _word;
