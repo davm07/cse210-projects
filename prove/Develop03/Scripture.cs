@@ -4,11 +4,8 @@ public class Scripture
 {
     private string _scriptureText;
     private Reference _scripReference;
-
     private List<Word> _wordsList;
-
     private List<int> _indexesList;
-
     private bool _isCompletlyHidden;
 
     public Scripture(string sentence, Reference reference) 
