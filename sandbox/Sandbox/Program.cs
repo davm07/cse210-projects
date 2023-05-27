@@ -16,13 +16,55 @@ class Program
         // group1._people.Add(person2);
         // group1.DisplayGroup();
 
-        Console.WriteLine("AAA");
-        Console.ReadLine();
         
-        // This will clear the console
-        Console.Clear();
+
+        List<string> CrearLista(string palabra)
+        {
+            List<string> palabras = palabra.Split(" ").ToList();
+            return palabras;
+        }
+
+        string CrearOracion()
+        {   
+            string oracion = "hey loco como estas, loco ayer te vi como eras";
+            Console.WriteLine(oracion);
+            Random rnd = new Random();
+            List<string> palabras = CrearLista(oracion);
+            int contador = 0;
+            
+            while(contador < palabras.Count)
+            {   
+                int index = rnd.Next(0, palabras.Count);
+                contador = index;
+                string nueva = new string('_', palabras[contador].Length);
+                palabras[contador] = nueva;
+                contador++;
+            }
+
+            oracion = string.Join(" ", palabras);
+            return oracion;
+        }
+
+        void Hidden(){
+            string ocultadas = CrearOracion();
+            List<string> ls = ocultadas.Split(" ").ToList();
+
+            for (int i = 0; i < ls.Count; i++)
+            {
+                if(ls[i] == (new string ('_', ls[i].Length)))
+                {
+                    Console.WriteLine($"{ls[i]} index: {i}");
+                } else
+                {
+                    Console.WriteLine(ls[i]);
+                }
+            }
+            
+        }
         
-        // This will show "BBB" in the console where "AAA" used to be
-        Console.WriteLine("BBB");
+        Hidden();
+        
+
+        
     }
 }

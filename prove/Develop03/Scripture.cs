@@ -4,45 +4,64 @@ public class Scripture
 {
     private string _scriptureText;
     private Reference _scripReference;
-    // private Word _wordHide;
 
-    private static Random rnd = new Random();
+    private List<Word> _wordsList;
 
-    public Scripture() 
+    private List<int> _indexesList;
+
+    private bool _isCompletlyHidden;
+
+    public Scripture(string sentence, Reference reference) 
     {
-        _scriptureText = "Trust in the Lord with all thine heart; and lean not unto thine own understanding; in all thy ways acknowledge him, and he shall direct thy paths.";
-        _scripReference = new Reference("Proverbs", 3, 5, 6);
-        // _wordHide = new Word(text);
+        _scriptureText = sentence;
+        _scripReference = reference;
+        MakeList();
     }
 
     public string MakeScripture()
     {
-        return $"{_scripReference.MakeReference()} {_scriptureText}";
-    }
-
-    public List<string> MakeList()
-    {
-        List<string> words = _scriptureText.Split(" ").ToList();
-        return words; 
-    }
-
-    public string CreateHiddenScrip(List<string> words)
-    {   
-        for (int i = 0; i < words.Count; i++)
-        {   
-            Word wordTohide = new Word(words[i]);
-            string hiddenword = wordTohide.DisplayText();
-            words[i] = hiddenword;
-            
+        string sentence = _scripReference.MakeReference();
+        foreach (var item in _wordsList)
+        {
+            sentence += $" {item.DisplayText()}";
         }
-
-        _scriptureText = string.Join(" ", words);
-        return _scriptureText;
+        return $"{sentence}";
     }
 
-    // public bool IsCompletelyHidden() 
-    // {
+    private void MakeList()
+    {   
+        _wordsList = new();
+        _indexesList = new();
+        List<string> words = _scriptureText.Split(" ").ToList();
+        int index = 0;
+        foreach (var item in words)
+        {
+            Word tempWord = new(item);
+            _wordsList.Add(tempWord);
+            _indexesList.Add(index);
+            index++;
+        }
+    }
+
+    public void HideWords()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Random rnd = new Random();
+            int index = rnd.Next(_indexesList.Count);
+            _wordsList[_indexesList[index]].Hide();
+            _indexesList.RemoveAt(index);
+        }
         
-    // }
-    
+        if(_indexesList.Count == 0)
+        {
+            _isCompletlyHidden = true;
+        }
+    }
+
+    public bool IsCompletlyHidden
+    {
+        get { return _isCompletlyHidden; }
+        set { _isCompletlyHidden = value; }
+    }    
 }

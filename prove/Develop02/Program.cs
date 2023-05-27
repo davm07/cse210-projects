@@ -35,6 +35,7 @@ class Program
                 {   
                     PromptGenerator newPrompt = new PromptGenerator();
                     Entry userEntry = new Entry();
+                    newJournal.AddEntry(userEntry);
                     string promptSelected = newPrompt.SelectPrompt();
                     userEntry._prompt = promptSelected;
                     Console.WriteLine(promptSelected);
