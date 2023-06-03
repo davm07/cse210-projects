@@ -19,6 +19,6 @@ class Program
                 Thread.Sleep(500);
                 Console.Write("\b \b");
             }
-        }
+        } 
     }
 }
