@@ -23,10 +23,13 @@ public class Activity
     }
 
     public void DisplayEndMsg()
-    {
+    {   
+        Console.WriteLine();
         Console.WriteLine("Well done!!");
-
+        DisplaySpinner();
+        Console.WriteLine();
         Console.WriteLine($"You have completed {_actDuration} seconds of the {_actName}");
+        DisplaySpinner();
     }
 
     public void DisplaySpinner()
@@ -38,7 +41,7 @@ public class Activity
         animation.Add("\\");
 
         DateTime starTime = DateTime.Now;
-        DateTime endTime = starTime.AddSeconds(5);
+        DateTime endTime = starTime.AddSeconds(4);
 
         while (DateTime.Now < endTime)
         {
@@ -51,9 +54,14 @@ public class Activity
         } 
     }
 
-    public void DisplayCountdown()
+    public void DisplayCountdown(int time)
     {
-
+        for (int i = time; i > 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
     }
 
     public string ActNameInfo

@@ -26,6 +26,7 @@ class Program
                     Console.Clear();
                     BreathingActivity brAct = new BreathingActivity();
                     brAct.DisplayStartMsg();
+                    brAct.RenderActivity();
                     Console.Clear();
                     break;
                 case 2:
