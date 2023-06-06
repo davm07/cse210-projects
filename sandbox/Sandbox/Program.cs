@@ -9,14 +9,14 @@ class Program
         animation.Add("\\");
 
         DateTime starTime = DateTime.Now;
-        DateTime endTime = starTime.AddSeconds(10);
+        DateTime endTime = starTime.AddSeconds(5);
 
         while (DateTime.Now < endTime)
         {
             foreach (string s in animation)
             {
                 Console.Write(s);
-                Thread.Sleep(500);
+                Thread.Sleep(350);
                 Console.Write("\b \b");
             }
         } 
