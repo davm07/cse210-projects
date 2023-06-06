@@ -20,6 +20,10 @@ public class Activity
         Console.Write("How long, in seconds, would you like for your session? ");
         int secondsToAdd = int.Parse(Console.ReadLine());
         _actDuration = secondsToAdd;
+
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        DisplaySpinner();
     }
 
     public void DisplayEndMsg()

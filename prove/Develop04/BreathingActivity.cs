@@ -10,10 +10,6 @@ public class BreathingActivity : Activity
 
     public void RenderActivity()
     {   
-        Console.Clear();
-        Console.WriteLine("Get ready...");
-        DisplaySpinner();
-
         DateTime starTime = DateTime.Now;
         DateTime endTime = starTime.AddSeconds(base.ActDurationInfo);
 

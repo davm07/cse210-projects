@@ -30,7 +30,11 @@ class Program
                     Console.Clear();
                     break;
                 case 2:
-                    Console.WriteLine("Hola");
+                    Console.Clear();
+                    ReflectionActivity refAct = new ReflectionActivity();
+                    refAct.DisplayStartMsg();
+                    refAct.RenderActivity();
+                    Console.Clear();
                     break;
                 case 3:
                     Console.WriteLine("Hola");
