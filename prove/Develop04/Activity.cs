@@ -5,7 +5,6 @@ public class Activity
     protected string _actName;
     protected string _actDescription;
     protected int _actDuration;
-
     private List<string> _usedPrompts = new List<string>();
     private static Random _rnd = new Random();
 

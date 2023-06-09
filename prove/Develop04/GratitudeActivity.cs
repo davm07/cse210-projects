@@ -13,6 +13,7 @@ public class GratitudeActivity : Activity
     {
         Console.WriteLine($"\n{SelectRandomPrompt(_gratitudePrompts)}");
     }
+    
     public void RenderActivity()
     {
         Console.WriteLine("\nYou will have prompts to help you think the thing you are grateful for.");
