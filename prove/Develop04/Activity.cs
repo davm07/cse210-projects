@@ -5,6 +5,8 @@ public class Activity
     protected string _actName;
     protected string _actDescription;
     protected int _actDuration;
+
+    private List<string> _usedPrompts = new List<string>();
     private static Random _rnd = new Random();
 
     public void DisplayStartMsg()
@@ -64,7 +66,19 @@ public class Activity
 
     protected string SelectRandomPrompt(string[] prompts)
     {   
-        int index = _rnd.Next(0, prompts.Length);      
-        return prompts[index];
+        if(_usedPrompts.Count == prompts.Length)
+        {
+            _usedPrompts.Clear();
+        }
+
+        string randomPrompt;
+        do
+        {
+            int index = _rnd.Next(0, prompts.Length);
+            randomPrompt = prompts[index];
+        } while (_usedPrompts.Contains(randomPrompt));
+
+        _usedPrompts.Add(randomPrompt);
+        return randomPrompt;
     }
 }
