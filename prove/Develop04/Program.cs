@@ -37,7 +37,11 @@ class Program
                     Console.Clear();
                     break;
                 case 3:
-                    Console.WriteLine("Hola");
+                    Console.Clear();
+                    ListingActivity listAct = new ListingActivity();
+                    listAct.DisplayStartMsg();
+                    listAct.RenderActivity();
+                    Console.Clear();
                     break;
             }
         }

@@ -2,16 +2,11 @@ using System;
 
 public class Activity
 {
-    private string _actName;
-    private string _actDescription;
-    private int _actDuration;
+    protected string _actName;
+    protected string _actDescription;
+    protected int _actDuration;
 
-    public Activity()
-    {
-        _actName = "";
-        _actDescription = "";
-        _actDuration = 0;
-    }
+    private static Random _rnd = new Random();
 
     public void DisplayStartMsg()
     {   
@@ -68,21 +63,9 @@ public class Activity
         }
     }
 
-    public string ActNameInfo
+    public string SelectRandomPrompt(string[] prompts)
     {
-        get { return _actName; }
-        set { _actName = value; }
+        int index = _rnd.Next(0, prompts.Length);
+        return prompts[index];
     }
-    public string ActDescriptionInfo
-    {
-        get { return _actDescription; }
-        set { _actDescription = value; }
-    }
-    
-    public int ActDurationInfo
-    {
-        get { return _actDuration; }
-        set { _actDuration = value; }
-    }
-    
 }
