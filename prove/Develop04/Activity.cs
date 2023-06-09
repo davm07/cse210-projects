@@ -5,7 +5,6 @@ public class Activity
     protected string _actName;
     protected string _actDescription;
     protected int _actDuration;
-
     private static Random _rnd = new Random();
 
     public void DisplayStartMsg()
@@ -18,20 +17,20 @@ public class Activity
 
         Console.Clear();
         Console.WriteLine("Get ready...");
-        DisplaySpinner();
+        DisplaySpinner(3);
     }
 
     public void DisplayEndMsg()
     {   
         Console.WriteLine();
         Console.WriteLine("Well done!!");
-        DisplaySpinner();
+        DisplaySpinner(3);
         Console.WriteLine();
         Console.WriteLine($"You have completed {_actDuration} seconds of the {_actName}");
-        DisplaySpinner();
+        DisplaySpinner(3);
     }
 
-    public void DisplaySpinner()
+    protected void DisplaySpinner(int time)
     {
         List<string> animation = new List<string>();
         animation.Add("|");
@@ -40,20 +39,20 @@ public class Activity
         animation.Add("\\");
 
         DateTime starTime = DateTime.Now;
-        DateTime endTime = starTime.AddSeconds(4);
+        DateTime endTime = starTime.AddSeconds(time);
 
         while (DateTime.Now < endTime)
         {
             foreach (string s in animation)
             {
                 Console.Write(s);
-                Thread.Sleep(350);
+                Thread.Sleep(250);
                 Console.Write("\b \b");
             }
         } 
     }
 
-    public void DisplayCountdown(int time)
+    protected void DisplayCountdown(int time)
     {
         for (int i = time; i > 0; i--)
         {
@@ -63,9 +62,9 @@ public class Activity
         }
     }
 
-    public string SelectRandomPrompt(string[] prompts)
-    {
-        int index = _rnd.Next(0, prompts.Length);
+    protected string SelectRandomPrompt(string[] prompts)
+    {   
+        int index = _rnd.Next(0, prompts.Length);      
         return prompts[index];
     }
 }

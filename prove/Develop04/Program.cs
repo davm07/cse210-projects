@@ -18,32 +18,51 @@ class Program
             Console.WriteLine(Indent(4) + "3. Start listing activity");
             Console.WriteLine(Indent(4) + "4. Quit");
             Console.Write("Select a choice from the menu: ");
-            option = int.Parse(Console.ReadLine());
-
-            switch (option)
+            try
             {
-                case 1:
-                    Console.Clear();
-                    BreathingActivity brAct = new BreathingActivity();
-                    brAct.DisplayStartMsg();
-                    brAct.RenderActivity();
-                    Console.Clear();
-                    break;
-                case 2:
-                    Console.Clear();
-                    ReflectionActivity refAct = new ReflectionActivity();
-                    refAct.DisplayStartMsg();
-                    refAct.RenderActivity();
-                    Console.Clear();
-                    break;
-                case 3:
-                    Console.Clear();
-                    ListingActivity listAct = new ListingActivity();
-                    listAct.DisplayStartMsg();
-                    listAct.RenderActivity();
-                    Console.Clear();
-                    break;
+                option = int.Parse(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        Console.Clear();
+                        BreathingActivity brAct = new BreathingActivity();
+                        brAct.DisplayStartMsg();
+                        brAct.RenderActivity();
+                        brAct.DisplayEndMsg();
+                        Console.Clear();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        ReflectionActivity refAct = new ReflectionActivity();
+                        refAct.DisplayStartMsg();
+                        refAct.RenderActivity();
+                        refAct.DisplayEndMsg();
+                        Console.Clear();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        ListingActivity listAct = new ListingActivity();
+                        listAct.DisplayStartMsg();
+                        listAct.RenderActivity();
+                        listAct.DisplayEndMsg();
+                        Console.Clear();
+                        break;
+                    case 4:
+                        Console.WriteLine("See you next time!");
+                        break;
+                    default:
+                        Console.WriteLine("Please type a option from the menu!");
+                        Console.WriteLine();
+                        break;
+                }
             }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please type a valid number");
+                Console.WriteLine();
+            }
+            
         }
     }
 }

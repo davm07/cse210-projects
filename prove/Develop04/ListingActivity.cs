@@ -10,7 +10,7 @@ public class ListingActivity : Activity
         _actDescription = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     }
 
-    public void DisplayPrompt()
+    private void DisplayPrompt()
     {
         Console.WriteLine($"--- {SelectRandomPrompt(_prompts)} ---");
     }
@@ -34,6 +34,5 @@ public class ListingActivity : Activity
             counter++;    
         }
         Console.WriteLine($"You listed {counter} items!");
-        DisplayEndMsg();
     }
 }

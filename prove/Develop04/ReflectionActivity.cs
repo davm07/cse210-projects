@@ -11,12 +11,12 @@ public class ReflectionActivity : Activity
         _actDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
 
-    public void DisplayRandomPrompt()
+    private void DisplayRandomPrompt()
     {
         Console.WriteLine($"\n--- {SelectRandomPrompt(_refQuestions)} ---\n");
     }
 
-    public void DisplayFixedPrompt()
+    private void DisplayFixedPrompt()
     {
         Console.Write($"> {SelectRandomPrompt(_fixedQuestions)} ");
     }
@@ -29,7 +29,7 @@ public class ReflectionActivity : Activity
         Console.ReadLine();
         Console.WriteLine("Now ponder on each of the following questions as they related to this experience");
         Console.Write("You may begin in: ");
-        DisplayCountdown(5);
+        DisplayCountdown(3);
         Console.Clear();
 
         DateTime starTime = DateTime.Now;
@@ -38,11 +38,9 @@ public class ReflectionActivity : Activity
         while (DateTime.Now < endTime)
         {   
             DisplayFixedPrompt();
-            DisplaySpinner();
+            DisplaySpinner(8);
             Console.WriteLine();
         }
-
-        DisplayEndMsg();
     }
 
 }
