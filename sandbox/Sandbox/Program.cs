@@ -1,24 +1,15 @@
 class Program
 {
     static void Main(string[] args)
-    {
-        List<string> animation = new List<string>();
-        animation.Add("|");
-        animation.Add("/");
-        animation.Add("-");
-        animation.Add("\\");
+    {   
+        GoalTest mainGoal = new GoalTest("x", "!");
+        SimpleGoaltest simpGoal = new SimpleGoaltest("Run a mile", "Run a mile in the morning");
+        simpGoal.AddGoal(simpGoal);
 
-        DateTime starTime = DateTime.Now;
-        DateTime endTime = starTime.AddSeconds(5);
+        SimpleGoaltest goal2 = new SimpleGoaltest("Call my mom", "I will call my mom in the afternoon");
+        goal2.AddGoal(goal2);
 
-        while (DateTime.Now < endTime)
-        {
-            foreach (string s in animation)
-            {
-                Console.Write(s);
-                Thread.Sleep(350);
-                Console.Write("\b \b");
-            }
-        } 
+        mainGoal.DisplayGoals();
+
     }
 }
