@@ -12,6 +12,13 @@ public class ChecklistGoal : Goal
         _bonusPoints = bonusPoints;
     }
 
+    public ChecklistGoal(string name, string description, int points, int bonusPoints, int times, int checkComplete) : base(name, description, points)
+    {
+        _timesToComplete = times;
+        _bonusPoints = bonusPoints;
+        _checkComplete = checkComplete;
+    }
+
     public override void DisplayGoal(int option)
     {
         switch (option)

@@ -1,0 +1,3 @@
+400
+SimpleGoal**Run||Run a mile||100||True
+SimpleGoal**give a talk||give a talk on sunday||100||True

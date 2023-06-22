@@ -68,4 +68,29 @@ public class MyGoals
             }
         }
     }
+
+    public void LoadGoals(string filename)
+    {
+        string value = File.ReadLines(filename).Take(1).First();
+        int points = int.Parse(value);
+        _totalPoints += points;
+
+        string [] lines = File.ReadAllLines(filename).Skip(1).ToArray();
+
+        foreach (var line in lines)
+        {
+            string[] parts = line.Split("**");
+            string goalType = parts[0];
+            string goalInfo = parts[1];
+            if(goalType == "SimpleGoal")
+            {
+                string[] goalParts = goalInfo.Split("||");
+                string goalName = goalParts[0];
+                string goalDescription = goalParts[1];
+                int goalPoints = int.Parse(goalParts[2]);
+                bool goalComplete = bool.Parse(goalParts[3]);
+                AddGoal(new SimpleGoal(goalName, goalDescription, goalPoints, goalComplete));
+            }
+        }
+    }
 }

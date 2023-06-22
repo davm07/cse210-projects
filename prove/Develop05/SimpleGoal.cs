@@ -3,9 +3,18 @@ using System;
 public class SimpleGoal : Goal
 {   
     
+    public SimpleGoal()
+    {
+
+    }
     public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
 
+    }
+
+    public SimpleGoal(string name, string description, int points, bool complete) : base(name, description, points)
+    {
+        _isComplete = complete;
     }
 
     public override void DisplayGoal(int option)

@@ -48,6 +48,9 @@ class Program
                     newGoals.SaveGoals(filename);
                     break;
                 case 4:
+                    Console.Write("What is the filename for the goal file? ");
+                    string filenameLoad = Console.ReadLine();
+                    newGoals.LoadGoals(filenameLoad);
                     break;
                 case 5:
                     Console.WriteLine("The goals are:");
