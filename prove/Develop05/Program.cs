@@ -67,6 +67,9 @@ class Program
                     newGoals.DisplayGoals(option);
                     break;
                 case 3:
+                    Console.Write("What is the filename for the goal file? ");
+                    string filename = Console.ReadLine();
+                    newGoals.SaveGoals(filename);
                     break;
                 case 4:
                     break;

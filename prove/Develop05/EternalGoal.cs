@@ -34,6 +34,7 @@ public class EternalGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        string goalString = $"EternalGoal**{_goalName}||{_goalDescription}||{_points}";
+        return goalString;
     }
 }

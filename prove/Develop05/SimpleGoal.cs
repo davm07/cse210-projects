@@ -45,7 +45,8 @@ public class SimpleGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        throw new NotImplementedException();
+        string goalString = $"SimpleGoal**{_goalName}||{_goalDescription}||{_points}||{_isComplete}";
+        return goalString;
     }
 
     public override bool IsComplete(int number)

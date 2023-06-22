@@ -37,4 +37,16 @@ public class MyGoals
     {
         _totalPoints += points;
     }
+
+    public void SaveGoals(string filename)
+    {   
+        using(StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(_totalPoints);
+            foreach (Goal goal in _goals)
+            {
+                outputFile.WriteLine(goal.GetStringRepresentation());
+            }
+        }
+    }
 }
