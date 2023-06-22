@@ -11,5 +11,34 @@ class Program
 
         mainGoal.DisplayGoals();
 
+        static void LoadGoals(string filename)
+        {
+            string value = File.ReadLines(filename).Take(1).First();
+            Console.WriteLine(value);
+
+            string[] lines = File.ReadAllLines(filename).Skip(1).ToArray();
+            
+            foreach (var line in lines)
+            {   
+                string[] parts = line.Split(":");
+                string code = parts[0];
+                string rest = parts[1];
+                string[] restHalf = rest.Split("**");
+                string ms1 = restHalf[0];
+                string ms2 = restHalf[1];
+                if (parts[0] == "J26")
+                {
+                    Console.WriteLine($"{ms1} - {ms2}");
+                } else if(parts[0] == "X29")
+                {
+                    Console.WriteLine($"{ms1} - {ms2}");
+                } else if(parts[0] == "C28")
+                {
+                    Console.WriteLine($"{ms1} - {ms2}");
+                }
+            }
+        }
+
+        LoadGoals("test.txt");
     }
 }
