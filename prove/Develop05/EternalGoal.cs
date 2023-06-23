@@ -26,12 +26,7 @@ public class EternalGoal : Goal
         Console.WriteLine($"Congratulations! You have earned {_points} points!");
         return earnedPoints;
     }
-
-    // public override bool IsComplete(int number)
-    // {
-    //     return false;
-    // }
-
+    
     public override string GetStringRepresentation()
     {
         string goalString = $"EternalGoal**{_goalName}||{_goalDescription}||{_points}";

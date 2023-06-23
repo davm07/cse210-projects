@@ -5,7 +5,6 @@ public abstract class Goal
     protected string _goalName;
     protected string _goalDescription;
     protected int _points;
-
     protected bool _isComplete = false;
 
     public Goal()
@@ -30,6 +29,4 @@ public abstract class Goal
     }
 
     public abstract string GetStringRepresentation();
-
-
 }

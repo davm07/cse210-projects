@@ -22,13 +22,14 @@ public class SimpleGoal : Goal
         switch (option)
         {
             case 2:
-                if (!_isComplete)
+                if (_isComplete)
+                {
+                    Console.WriteLine($"[X] {_goalName} ({_goalDescription})");
+                } 
+                else 
                 {
                     Console.WriteLine($"[ ] {_goalName} ({_goalDescription})");
-                } else {
-                    Console.WriteLine($"[X] {_goalName} ({_goalDescription})");
                 }
-                
                 break;
             case 5:
                 Console.WriteLine(_goalName);
@@ -44,7 +45,8 @@ public class SimpleGoal : Goal
             Console.WriteLine($"Congratulations! You have earned {_points} points!");
             _isComplete = IsComplete(earnedPoints);
             
-        } else 
+        } 
+        else 
         {
             Console.WriteLine("You already complete this goal!");
         }
@@ -65,7 +67,9 @@ public class SimpleGoal : Goal
         {
             completed = true;
             return completed;
-        } else {
+        } 
+        else 
+        {
             return completed;
         }
     }

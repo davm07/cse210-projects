@@ -6,6 +6,11 @@ public class ChecklistGoal : Goal
     private int _bonusPoints;
     private int _checkComplete;
 
+    public ChecklistGoal()
+    {
+
+    }
+
     public ChecklistGoal(string name, string description, int points, int times, int bonusPoints) : base(name, description, points)
     {
         _timesToComplete = times;
@@ -27,7 +32,8 @@ public class ChecklistGoal : Goal
                 if(_isComplete)
                 {
                     Console.WriteLine($"[X] {_goalName} ({_goalDescription}) -- Currently Completed: {_checkComplete}/{_timesToComplete}");
-                } else 
+                } 
+                else 
                 {
                     Console.WriteLine($"[ ] {_goalName} ({_goalDescription}) -- Currently Completed: {_checkComplete}/{_timesToComplete}");
                 }
@@ -50,12 +56,15 @@ public class ChecklistGoal : Goal
             {
                 earnedPoints = _points + _bonusPoints;
                 Console.WriteLine($"Congratulations! You have earned {earnedPoints} points!");
-            } else 
+            } 
+            else 
             {
                 Console.WriteLine($"Congratulations! You have earned {_points} points!");
             }
             
-        } else {
+        } 
+        else 
+        {
             Console.WriteLine("You already complete this goal!");
         }
         return earnedPoints;
@@ -68,7 +77,8 @@ public class ChecklistGoal : Goal
         {
             completed = true;
             return completed;
-        } else {
+        } 
+        else {
             return completed;
         }
     }
