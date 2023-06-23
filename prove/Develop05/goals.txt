@@ -1,3 +1,5 @@
-400
-SimpleGoal**Run||Run a mile||100||True
-SimpleGoal**give a talk||give a talk on sunday||100||True
+750
+SimpleGoal**Run a mile||Run a mile today||100||True
+ChecklistGoal**Go to the temple||go to the temple 2 times this month||50||300||2||2
+SimpleGoal**Give a talk||give a talk on sunday||100||True
+EternalGoal**Read the scriptures||read the scriptures every day for 10 minutes||50

@@ -75,7 +75,7 @@ public class MyGoals
         int points = int.Parse(value);
         _totalPoints += points;
 
-        string [] lines = File.ReadAllLines(filename).Skip(1).ToArray();
+        string [] lines = File.ReadAllLines(filename).Skip(1).ToArray(); 
 
         foreach (var line in lines)
         {
@@ -90,6 +90,23 @@ public class MyGoals
                 int goalPoints = int.Parse(goalParts[2]);
                 bool goalComplete = bool.Parse(goalParts[3]);
                 AddGoal(new SimpleGoal(goalName, goalDescription, goalPoints, goalComplete));
+            } else if (goalType == "EternalGoal")
+            {
+                string[] goalParts = goalInfo.Split("||");
+                string goalName = goalParts[0];
+                string goalDescription = goalParts[1];
+                int goalPoints = int.Parse(goalParts[2]);
+                AddGoal(new EternalGoal(goalName, goalDescription, goalPoints));
+            } else if(goalType == "ChecklistGoal")
+            {
+                string[] goalParts = goalInfo.Split("||");
+                string goalName = goalParts[0];
+                string goalDescription = goalParts[1];
+                int goalPoints = int.Parse(goalParts[2]);
+                int goalBonusPoints = int.Parse(goalParts[3]);
+                int goalTimes = int.Parse(goalParts[4]);
+                int goalCheckComplete = int.Parse(goalParts[5]);
+                AddGoal(new ChecklistGoal(goalName, goalDescription, goalPoints, goalBonusPoints, goalTimes, goalCheckComplete));
             }
         }
     }
