@@ -33,7 +33,9 @@ class Program
         while (option != 6)
         {   
             int totalPoints = newGoals.PointsInfo;
-            Console.WriteLine($"\nYou have {totalPoints} points.\n");
+            int level = newGoals.LevelInfo;
+            Console.WriteLine($"\nYou have {totalPoints} points.");
+            Console.WriteLine($"You are currently in level {level}.\n");
             DisplayMenuOptions();
             Console.Write("Select a choice from the menu: ");
             option = int.Parse(Console.ReadLine());

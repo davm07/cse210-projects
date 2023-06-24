@@ -17,11 +17,12 @@ public class ChecklistGoal : Goal
         _bonusPoints = bonusPoints;
     }
 
-    public ChecklistGoal(string name, string description, int points, int bonusPoints, int times, int checkComplete) : base(name, description, points)
+    public ChecklistGoal(string name, string description, int points, int bonusPoints, int times, int checkComplete, bool isComplete) : base(name, description, points)
     {
         _timesToComplete = times;
         _bonusPoints = bonusPoints;
         _checkComplete = checkComplete;
+        _isComplete = isComplete;
     }
 
     public override void DisplayGoal(int option)
@@ -85,7 +86,7 @@ public class ChecklistGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        string goalString = $"ChecklistGoal**{_goalName}|{_goalDescription}|{_points}|{_bonusPoints}|{_timesToComplete}|{_checkComplete}";
+        string goalString = $"ChecklistGoal**{_goalName}|{_goalDescription}|{_points}|{_bonusPoints}|{_timesToComplete}|{_checkComplete}|{_isComplete}";
         return goalString;
     }
 }

@@ -4,11 +4,17 @@ public class MyGoals
 {
     private List<Goal> _goals = new List<Goal>();
     private int _totalPoints;
+    private int _level = 1;
 
     public int PointsInfo
     {
         get { return _totalPoints; }
     }
+    public int LevelInfo
+    {
+        get { return _level; }
+    }
+    
 
     public void CreateGoals(int choice)
     {   
@@ -72,6 +78,7 @@ public class MyGoals
         {
             int points = _goals[option -1].RecordEvent();
             _totalPoints += points;
+            LevelUp(_totalPoints);
             Console.WriteLine($"You now have {_totalPoints} points!");
         }
         else
@@ -81,6 +88,26 @@ public class MyGoals
         
     }
 
+    public void LevelUp(int number)
+    {
+        if (number >= 200 && number < 500)
+        {
+            _level = 2;
+        }
+        else if (number >= 500 && number < 800)  
+        {
+            _level = 3;
+        }
+        else if (number >= 800 && number < 1200)
+        {
+            _level = 4;
+        }
+        else if(number >= 1200)
+        {
+            _level = 5;
+        }
+    }
+
     public void SaveGoals(string filename)
     {   
         if(_goals.Count > 0)
@@ -88,6 +115,7 @@ public class MyGoals
             using(StreamWriter outputFile = new StreamWriter(filename))
             {
                 outputFile.WriteLine(_totalPoints);
+                outputFile.WriteLine(_level);
                 foreach (Goal goal in _goals)
                 {
                     outputFile.WriteLine(goal.GetStringRepresentation());
@@ -110,7 +138,10 @@ public class MyGoals
                 string value = File.ReadLines(filename).Take(1).First();
                 int points = int.Parse(value);
                 _totalPoints += points;
-                string [] lines = File.ReadAllLines(filename).Skip(1).ToArray(); 
+                string value2 = File.ReadLines(filename).Skip(1).Take(1).First();
+                int level = int.Parse(value2);
+                _level = level;
+                string [] lines = File.ReadAllLines(filename).Skip(2).ToArray(); 
                 foreach (var line in lines)
                 {
                     string[] parts = line.Split("**");
@@ -142,7 +173,8 @@ public class MyGoals
                         int goalBonusPoints = int.Parse(goalParts[3]);
                         int goalTimes = int.Parse(goalParts[4]);
                         int goalCheckComplete = int.Parse(goalParts[5]);
-                        AddGoal(new ChecklistGoal(goalName, goalDescription, goalPoints, goalBonusPoints, goalTimes, goalCheckComplete));
+                        bool goalIsComplete = bool.Parse(goalParts[6]);
+                        AddGoal(new ChecklistGoal(goalName, goalDescription, goalPoints, goalBonusPoints, goalTimes, goalCheckComplete, goalIsComplete));
                     }
                 }
             }
