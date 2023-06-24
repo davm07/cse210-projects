@@ -6,6 +6,26 @@ class Program
     {
         return "".PadLeft(count);
     }
+
+    public static void DisplayMenuOptions()
+    {
+        Console.WriteLine("Menu Options:");
+        Console.WriteLine(Indent(4) + "1. Create New Goal");
+        Console.WriteLine(Indent(4) + "2. List Goals");
+        Console.WriteLine(Indent(4) + "3. Save Goals");
+        Console.WriteLine(Indent(4) + "4. Load Goals");
+        Console.WriteLine(Indent(4) + "5. Record Events");
+        Console.WriteLine(Indent(4) + "6. Quit");
+    }
+
+    public static void DisplayGoalTypes()
+    {
+        Console.WriteLine("The types of Goals are:");
+        Console.WriteLine(Indent(4) + "1. Simple Goal");
+        Console.WriteLine(Indent(4) + "2. Eternal Goal");
+        Console.WriteLine(Indent(4) + "3. Checklist Goal");
+    }
+
     static void Main(string[] args)
     {
         MyGoals newGoals = new MyGoals();
@@ -13,16 +33,8 @@ class Program
         while (option != 6)
         {   
             int totalPoints = newGoals.PointsInfo;
-            Console.WriteLine();
-            Console.WriteLine($"You have {totalPoints} points.");
-            Console.WriteLine();
-            Console.WriteLine("Menu Options:");
-            Console.WriteLine(Indent(4) + "1. Create New Goal");
-            Console.WriteLine(Indent(4) + "2. List Goals");
-            Console.WriteLine(Indent(4) + "3. Save Goals");
-            Console.WriteLine(Indent(4) + "4. Load Goals");
-            Console.WriteLine(Indent(4) + "5. Record Events");
-            Console.WriteLine(Indent(4) + "6. Quit");
+            Console.WriteLine($"\nYou have {totalPoints} points.\n");
+            DisplayMenuOptions();
             Console.Write("Select a choice from the menu: ");
             option = int.Parse(Console.ReadLine());
 
@@ -30,10 +42,7 @@ class Program
             {
                 case 1:
                     int choice = 0;
-                    Console.WriteLine("The types of Goals are:");
-                    Console.WriteLine(Indent(4) + "1. Simple Goal");
-                    Console.WriteLine(Indent(4) + "2. Eternal Goal");
-                    Console.WriteLine(Indent(4) + "3. Checklist Goal");
+                    DisplayGoalTypes();
                     Console.Write("Which type of goal would you like to create? ");
                     choice = int.Parse(Console.ReadLine());
                     newGoals.CreateGoals(choice);
