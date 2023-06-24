@@ -29,7 +29,7 @@ public class EternalGoal : Goal
     
     public override string GetStringRepresentation()
     {
-        string goalString = $"EternalGoal**{_goalName}||{_goalDescription}||{_points}";
+        string goalString = $"EternalGoal**{_goalName},{_goalDescription},{_points}";
         return goalString;
     }
 }
