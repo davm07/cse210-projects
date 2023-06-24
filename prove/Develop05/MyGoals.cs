@@ -40,21 +40,36 @@ public class MyGoals
     }
 
     public void DisplayGoals(int option)
-    {
-        int count = 1;
-        foreach (var goal in _goals)
-        {   
-            Console.Write($"{count}. ");
-            goal.DisplayGoal(option);
-            count++;
+    {   
+        if(_goals.Count > 0)
+        {
+            int count = 1;
+            foreach (var goal in _goals)
+            {   
+                Console.Write($"{count}. ");
+                goal.DisplayGoal(option);
+                count++;
+            }
+        }
+        else
+        {
+            Console.WriteLine("You don't have any goal at this time");
         }
     }
 
     public void RecordGoal(int option)
-    {
-        int points = _goals[option -1].RecordEvent();
-        _totalPoints += points;
-        Console.WriteLine($"You now have {_totalPoints} points!");
+    {   
+        if (option > 0 && option <= _goals.Count)
+        {
+            int points = _goals[option -1].RecordEvent();
+            _totalPoints += points;
+            Console.WriteLine($"You now have {_totalPoints} points!");
+        }
+        else
+        {
+            Console.WriteLine("Please type a valid option!");
+        }
+        
     }
 
     public void SaveGoals(string filename)
@@ -70,44 +85,52 @@ public class MyGoals
     }
 
     public void LoadGoals(string filename)
-    {
-        string value = File.ReadLines(filename).Take(1).First();
-        int points = int.Parse(value);
-        _totalPoints += points;
-
-        string [] lines = File.ReadAllLines(filename).Skip(1).ToArray(); 
-
-        foreach (var line in lines)
+    {   
+        var f = new FileInfo(filename);
+        if (f.Length > 0)
         {
-            string[] parts = line.Split("**");
-            string goalType = parts[0];
-            string goalInfo = parts[1];
-            if(goalType == "SimpleGoal")
+            string value = File.ReadLines(filename).Take(1).First();
+            int points = int.Parse(value);
+            _totalPoints += points;
+
+            string [] lines = File.ReadAllLines(filename).Skip(1).ToArray(); 
+
+            foreach (var line in lines)
             {
-                string[] goalParts = goalInfo.Split("|");
-                string goalName = goalParts[0];
-                string goalDescription = goalParts[1];
-                int goalPoints = int.Parse(goalParts[2]);
-                bool goalComplete = bool.Parse(goalParts[3]);
-                AddGoal(new SimpleGoal(goalName, goalDescription, goalPoints, goalComplete));
-            } else if (goalType == "EternalGoal")
-            {
-                string[] goalParts = goalInfo.Split("|");
-                string goalName = goalParts[0];
-                string goalDescription = goalParts[1];
-                int goalPoints = int.Parse(goalParts[2]);
-                AddGoal(new EternalGoal(goalName, goalDescription, goalPoints));
-            } else if(goalType == "ChecklistGoal")
-            {
-                string[] goalParts = goalInfo.Split("|");
-                string goalName = goalParts[0];
-                string goalDescription = goalParts[1];
-                int goalPoints = int.Parse(goalParts[2]);
-                int goalBonusPoints = int.Parse(goalParts[3]);
-                int goalTimes = int.Parse(goalParts[4]);
-                int goalCheckComplete = int.Parse(goalParts[5]);
-                AddGoal(new ChecklistGoal(goalName, goalDescription, goalPoints, goalBonusPoints, goalTimes, goalCheckComplete));
+                string[] parts = line.Split("**");
+                string goalType = parts[0];
+                string goalInfo = parts[1];
+                if(goalType == "SimpleGoal")
+                {
+                    string[] goalParts = goalInfo.Split("|");
+                    string goalName = goalParts[0];
+                    string goalDescription = goalParts[1];
+                    int goalPoints = int.Parse(goalParts[2]);
+                    bool goalComplete = bool.Parse(goalParts[3]);
+                    AddGoal(new SimpleGoal(goalName, goalDescription, goalPoints, goalComplete));
+                } else if (goalType == "EternalGoal")
+                {
+                    string[] goalParts = goalInfo.Split("|");
+                    string goalName = goalParts[0];
+                    string goalDescription = goalParts[1];
+                    int goalPoints = int.Parse(goalParts[2]);
+                    AddGoal(new EternalGoal(goalName, goalDescription, goalPoints));
+                } else if(goalType == "ChecklistGoal")
+                {
+                    string[] goalParts = goalInfo.Split("|");
+                    string goalName = goalParts[0];
+                    string goalDescription = goalParts[1];
+                    int goalPoints = int.Parse(goalParts[2]);
+                    int goalBonusPoints = int.Parse(goalParts[3]);
+                    int goalTimes = int.Parse(goalParts[4]);
+                    int goalCheckComplete = int.Parse(goalParts[5]);
+                    AddGoal(new ChecklistGoal(goalName, goalDescription, goalPoints, goalBonusPoints, goalTimes, goalCheckComplete));
+                }
             }
         }
-    }
+        else
+        {
+            Console.WriteLine($"{f.Name} is empty");
+        }
+    }     
 }

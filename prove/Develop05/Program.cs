@@ -59,6 +59,12 @@ class Program
                     int goalToComplete = int.Parse(Console.ReadLine());
                     newGoals.RecordGoal(goalToComplete);
                     break;
+                case 6:
+                    Console.WriteLine("Hope to see you soon!");
+                    break;
+                default:
+                    Console.WriteLine("Please type a valid option from the menu!");
+                    break;
             }
         }
     }
