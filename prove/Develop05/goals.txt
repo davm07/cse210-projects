@@ -1,1 +1,5 @@
-
+500
+ChecklistGoal**Go to the temple|go to the temple 2 times this month|50|200|2|2
+SimpleGoal**Run tomorrow|run 2 miles tomorrow morning|100|True
+ChecklistGoal**Study math|study math 4 times this week|50|1|500|1
+EternalGoal**Read the scriptures|read the scriptures every day |50
