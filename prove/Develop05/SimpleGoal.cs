@@ -56,7 +56,7 @@ public class SimpleGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        string goalString = $"SimpleGoal**{_goalName},{_goalDescription},{_points},{_isComplete}";
+        string goalString = $"SimpleGoal**{_goalName}|{_goalDescription}|{_points}|{_isComplete}";
         return goalString;
     }
 

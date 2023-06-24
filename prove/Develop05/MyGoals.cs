@@ -84,7 +84,7 @@ public class MyGoals
             string goalInfo = parts[1];
             if(goalType == "SimpleGoal")
             {
-                string[] goalParts = goalInfo.Split("||");
+                string[] goalParts = goalInfo.Split("|");
                 string goalName = goalParts[0];
                 string goalDescription = goalParts[1];
                 int goalPoints = int.Parse(goalParts[2]);
@@ -92,14 +92,14 @@ public class MyGoals
                 AddGoal(new SimpleGoal(goalName, goalDescription, goalPoints, goalComplete));
             } else if (goalType == "EternalGoal")
             {
-                string[] goalParts = goalInfo.Split("||");
+                string[] goalParts = goalInfo.Split("|");
                 string goalName = goalParts[0];
                 string goalDescription = goalParts[1];
                 int goalPoints = int.Parse(goalParts[2]);
                 AddGoal(new EternalGoal(goalName, goalDescription, goalPoints));
             } else if(goalType == "ChecklistGoal")
             {
-                string[] goalParts = goalInfo.Split("||");
+                string[] goalParts = goalInfo.Split("|");
                 string goalName = goalParts[0];
                 string goalDescription = goalParts[1];
                 int goalPoints = int.Parse(goalParts[2]);
