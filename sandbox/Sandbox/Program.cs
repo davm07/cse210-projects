@@ -40,7 +40,20 @@ class Program
     //     }
 
     //     LoadGoals("test.txt");
-        Activity activity = new Activity("hey", 13);
-        Console.WriteLine(activity.Distance());
+        // Activity activity = new Activity("hey", 13);
+        // Console.WriteLine(activity.Distance());
+
+        int num = 2;
+        // do
+        // {
+        //     Console.WriteLine("Ingrese numero");
+        //     num = int.Parse(Console.ReadLine());
+        // } while (num > 3);
+
+        while (num > 1)
+        {
+            Console.WriteLine("Ingrese numero");
+            num = int.Parse(Console.ReadLine());
+        }
     }
 }
