@@ -23,7 +23,6 @@ public class Address
     public string GetStringAddress()
     {
         string address = $"{_street}, {_city}, {_stateOrProvince}, {_country.ToUpper()}";
-
         return address;
     }
 }
