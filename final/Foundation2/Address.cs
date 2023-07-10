@@ -35,7 +35,6 @@ public class Address
     public string GetAddress()
     {
         string address = $"{_street}, {_city}, {_stateOrProvince}, {_country.ToUpper()}";
-
         return address;
     }
 }
